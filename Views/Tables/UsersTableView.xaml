@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="KEMA.Views.UsersTableView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:KEMA.Views"
+             xmlns:models="clr-namespace:KEMA.Models"
+             mc:Ignorable="d" 
+             Height="Auto"
+             Width="Auto"
+             d:DesignHeight="300">
+    <ListView Grid.Row="1" ItemsSource="{Binding List}" SelectedItem="{Binding SelectedItem}" HorizontalAlignment="Stretch" HorizontalContentAlignment ="Stretch">
+        <ListView.View>
+            <GridView>
+                <GridViewColumn Header="First Name" DisplayMemberBinding="{Binding first_name}" Width="110" />
+                <GridViewColumn Header="Last Name" DisplayMemberBinding="{Binding last_name}"  Width="110"/>
+                <GridViewColumn Header="Email Address" DisplayMemberBinding="{Binding email_address}"  Width="150"/>
+                <GridViewColumn Header="User Type" DisplayMemberBinding="{Binding user_type}"  Width="80"/>
+                <GridViewColumn Header="Username" DisplayMemberBinding="{Binding user_name}"  Width="100"/>
+            </GridView>
+        </ListView.View>
+    </ListView>
+
+</UserControl>

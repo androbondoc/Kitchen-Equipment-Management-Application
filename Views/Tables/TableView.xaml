@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="KEMA.Views.TableView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:KEMA.Views"
+             xmlns:viewModels="clr-namespace:KEMA.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" Width="auto">
+    <Border Grid.Column="1">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBlock Text="{Binding TableName, StringFormat=' {0}'}" FontSize="18" FontWeight="Bold" />
+            <WrapPanel Grid.Row="1" HorizontalAlignment="Right">
+                <Button Width="100" Height="28" Content="{Binding newButtonContent}" Command="{Binding NewItemCommand}" Margin="2"/>
+                <Button Width="100" Height="28" Content="{Binding editButtonContent}" Command="{Binding EditItemCommand}" Margin="2"/>
+                <Button Width="100" Height="28" Content="{Binding deleteButtonContent}" Command="{Binding DeleteItemCommand}" Margin="2"/>
+            </WrapPanel>
+            <ContentControl  Grid.Row="2" Content="{Binding}">
+                <ContentControl.Resources>
+                    <DataTemplate DataType="{x:Type viewModels:UsersViewModel}">
+                        <local:UsersTableView DataContext="{Binding}" />
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewModels:EquipmentsViewModel}">
+                        <local:EquipmentsTableView DataContext="{Binding}" />
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewModels:SitesViewModel}">
+                        <local:SitesTableView DataContext="{Binding}" />
+                    </DataTemplate>
+                    
+                   
+                </ContentControl.Resources>
+            </ContentControl>
+        </Grid>
+    </Border>
+</UserControl>
