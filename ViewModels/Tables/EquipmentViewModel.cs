@@ -32,7 +32,8 @@ namespace KEMA.ViewModels
             if (MEVM.SaveEdit)
             {
                 Equipment = MEVM.Item;
-                PopupProvider.Info("Equipment has been added", string.Format("Equipment name:{0}", Equipment.serial_number));
+                string equipmentName = Equipment.serial_number + " - " + Equipment.description;
+                PopupProvider.Info("Equipment has been added", string.Format("Equipment name:{0}", equipmentName));
                 RefreshList(parameter);
                 foreach (var p in List)
                 {
@@ -54,7 +55,8 @@ namespace KEMA.ViewModels
             if (MEVM.SaveEdit)
             {
                 Equipment = MEVM.Item;
-                PopupProvider.Info("Equipment has been modified", string.Format("Equipment name:{0}", Equipment.serial_number));
+                string equipmentName = Equipment.serial_number + " - " + Equipment.description;
+                PopupProvider.Info("Equipment has been modified", string.Format("Equipment name:{0}", equipmentName));
                 RefreshList(parameter);
                 foreach (var p in List)
                     if (Equipment.equipment_id == p.equipment_id)
@@ -65,7 +67,7 @@ namespace KEMA.ViewModels
         protected override void DeleteItem(object parameter)
         {
 
-            string name = SelectedItem.serial_number;
+            string name = SelectedItem.serial_number + " - " +SelectedItem.description;
             if (EquipmentManager.DeleteEquipment(SelectedItem))
             {
                 RefreshList(parameter);
